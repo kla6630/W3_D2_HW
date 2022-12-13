@@ -133,8 +133,8 @@ console.log(
 function arrayDispari() {
   let arrayDispari = [];
 
-  for (let numero = 1; numero < 100; numero++) {
-    if (numero % 2 === 1) {
+  for (let numero = 0; numero < 100; numero++) {
+    if (numero % 2 === 0) {
       arrayDispari.push(numero);
     }
   }
@@ -297,12 +297,29 @@ console.log(
   "-----------------------------------------------ESERCIZIO 12-----------------------------------------------"
 );
 
+const onlyTitles = (array) => {
+  return array.map((elem) => elem.Title);
+};
+console.log(onlyTitles(movies));
+
 /* ESERCIZIO 13
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
 console.log(
   "-----------------------------------------------ESERCIZIO 13-----------------------------------------------"
 );
+//CHIEDERE SPIEGAZIONE A MAGGIE O CERCARE SOLUZIONE ALTERNATIVA PERCHE NON FUNZIONA
+const onlyInThisMillennium = (array) => {
+  let result = [];
+  for (let i = 0; i < array.lenght; i++) {
+    if (parseInt(array[i].Year) > 1999) {
+      result.push(array[i]);
+    }
+  }
+  return result;
+};
+
+console.log(onlyInThisMillennium(movies));
 
 /* ESERCIZIO 14
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
@@ -311,9 +328,24 @@ console.log(
   "-----------------------------------------------ESERCIZIO 14-----------------------------------------------"
 );
 
+const movieById = (array, id) => {
+  const selection = array.filter((element) => element.imdbID === id);
+
+  console.log(selection);
+};
+movieById(movies, "tt0355702");
+
 /* ESERCIZIO 15
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
 console.log(
   "-----------------------------------------------ESERCIZIO 15-----------------------------------------------"
 );
+const filmSum = (array) => {
+  const selection = array.reduce(function (accumulator, curValue) {
+    let value = parseInt(curValue.Year);
+    return accumulator + value;
+  }, 0);
+  console.log("The sum of the years is: " + selection);
+};
+filmSum(movies);
